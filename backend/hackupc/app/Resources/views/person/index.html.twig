@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Person list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Profileimageurl</th>
+                <th>Description</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for person in people %}
+            <tr>
+                <td><a href="{{ path('users_show', { 'id': person.id }) }}">{{ person.id }}</a></td>
+                <td>{{ person.name }}</td>
+                <td>{{ person.profileImageUrl }}</td>
+                <td>{{ person.description }}</td>
+                <td>{{ person.city }}</td>
+                <td>{{ person.country }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('users_show', { 'id': person.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('users_edit', { 'id': person.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('users_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

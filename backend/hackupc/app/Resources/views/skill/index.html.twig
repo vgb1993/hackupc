@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Skill list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Value</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for skill in skills %}
+            <tr>
+                <td><a href="{{ path('skills_show', { 'id': skill.id }) }}">{{ skill.id }}</a></td>
+                <td>{{ skill.name }}</td>
+                <td>{{ skill.value }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('skills_show', { 'id': skill.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('skills_edit', { 'id': skill.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('skills_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
